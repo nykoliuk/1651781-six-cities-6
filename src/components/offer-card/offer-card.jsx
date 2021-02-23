@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import offerTypes from '../../prop-types/offer-types';
 
 const OfferCard = (props) => {
-  const {offer, onHover} = props;
+  const {offer} = props;
+  const [activeOffer, setActiveOffer] = useState(null);
+
+  const onHover = (id) => {
+    setActiveOffer(id);
+  };
+
+  useEffect(() => {
+    document.title = `Предложение ${activeOffer}`;
+  });
+
   return (
     <article
       className="cities__place-card place-card"
