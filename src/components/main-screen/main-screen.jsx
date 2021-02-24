@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardItem from '../card-item/card-item';
+import OffersList from '../offers-list/offers-list';
+import offerTypes from '../../prop-types/offer-types';
 
 const MainScreen = (props) => {
-  const {places, cards} = props;
+  const {places, offers} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -87,7 +88,9 @@ const MainScreen = (props) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {cards.map((card) => <CardItem key={card.id} card={card}></CardItem>)}
+                <OffersList
+                  offers={offers}
+                />
               </div>
             </section>
             <div className="cities__right-section">
@@ -102,16 +105,7 @@ const MainScreen = (props) => {
 
 MainScreen.propTypes = {
   places: PropTypes.number.isRequired,
-  cards: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
-    inBookmarks: PropTypes.bool,
-    isPremium: PropTypes.bool,
-    img: PropTypes.string
-  })).isRequired
+  offers: PropTypes.arrayOf(PropTypes.shape(offerTypes)).isRequired
 };
 
 export default MainScreen;
