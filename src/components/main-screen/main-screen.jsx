@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OffersList from '../offers-list/offers-list';
 import offerTypes from '../../prop-types/offer-types';
+import Map from '../map/map';
 
 const MainScreen = (props) => {
   const {places, offers} = props;
+  const city = {
+    lat: 52.38333,
+    lng: 4.9,
+    zoom: 12
+  };
 
   return (
     <div className="page page--gray page--main">
@@ -94,7 +100,10 @@ const MainScreen = (props) => {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                city={city}
+                points={offers}
+              />
             </div>
           </div>
         </div>
