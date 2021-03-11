@@ -1,11 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import FavoriteCard from '../favorite-card/favorite-card';
-import offerTypes from '../../prop-types/offer-types';
+import FavoritesList from '../favorites-list/favorites-list';
 
-const FavoritesScreen = (props) => {
-  const {offers} = props;
+const FavoritesScreen = () => {
   return (
     <div className="page">
       <header className="header">
@@ -35,41 +32,7 @@ const FavoritesScreen = (props) => {
         <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
-            <ul className="favorites__list">
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Amsterdam</span>
-                    </a>
-                  </div>
-                </div>
-                <div className="favorites__places">
-                  {offers.map((offer, id) =>
-                    <FavoriteCard key={id}
-                      offer={offer}
-                    />
-                  )}
-                </div>
-              </li>
-
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Cologne</span>
-                    </a>
-                  </div>
-                </div>
-                <div className="favorites__places">
-                  {offers.map((offer, id) =>
-                    <FavoriteCard key={id}
-                      offer={offer}
-                    />
-                  )}
-                </div>
-              </li>
-            </ul>
+            <FavoritesList />
           </section>
         </div>
       </main>
@@ -81,10 +44,6 @@ const FavoritesScreen = (props) => {
       </footer>
     </div>
   );
-};
-
-FavoritesScreen.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.shape(offerTypes)).isRequired
 };
 
 export default FavoritesScreen;
