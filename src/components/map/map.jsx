@@ -9,7 +9,7 @@ const Map = ({city, points}) => {
   const mapRef = useRef();
 
   useEffect(() => {
-    mapRef.current = leaflet.map(`map`, {
+    mapRef.current = leaflet.map(mapRef.current, {
       center: {
         lat: city.lat,
         lng: city.lng
@@ -46,7 +46,7 @@ const Map = ({city, points}) => {
   }, []);
 
   return (
-    <section className="cities__map map" id="map" ref={mapRef}></section>
+    <section className="cities__map map" ref={mapRef}></section>
   );
 };
 
